@@ -137,12 +137,12 @@
 		routeTime(Stop1, Stop2, Route, RouteTime):-
 			calcRoute(Stop1, Stop2, Route),
 			length(Route, Time),
-			RouteTime is (Time -1) * 3.
+			RouteTime is (Time -1) * 6.
 
 	% This rule outputs a route specified by the user using the route rule stated above
 	%	then calculates the time needed to travel.
-	%	For this example we chose a mean of 3 minutes between 2 stops,
-	%	which makes 3 minutes per stop minus the one you are already at.
+	%	For this example we chose a mean of 6 minutes between 2 stops,
+	%	which makes 6 minutes per stop minus the one you are already at.
 
 /*===================*/
 
