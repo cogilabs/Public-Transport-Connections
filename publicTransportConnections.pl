@@ -74,8 +74,8 @@
 /*===================*/
 
 % Here we check if two stops are on the same line
-	% Sameline
-		sameline(Stop1, Stop2, Line):-
+	% SameLine
+		sameLine(Stop1, Stop2, Line):-
 			stop(Stop1, Line1),
 			stop(Stop2, Line2),
 			member(Line, Line1),
@@ -108,7 +108,7 @@
 /*===================*/
 
 % Route between two stops
-		calcRoute(Stop1, Stop2, Route):-													/*Main rule*/
+		calcRoute(Stop1, Stop2, Route):-									/*Main rule*/
 				tempRoute(Stop1, Stop2, [], Return),
 				reverse([Stop2|Return],Route).
 
@@ -124,7 +124,7 @@
 				tempRoute(Next, Stop2, [Stop1|Temp], Route).
 
 	% This rule is the most complex of the code, it calls a function that calculates the route.
-	% To do that, the calcRoute function checks if both stations are already next to each other,
+	% To do that, the tempRoute function checks if both stations are already next to each other,
 	% if they are not, it starts the recursive rule.
 	% The recursive rule adds the next stop that is adjacent to Stop1 to the Route, then checks if it is Stop2.
 	% If it is not, it save the new established route as Temp and continues with the next adjacent stop.
@@ -139,7 +139,7 @@
 			length(Route, Time),
 			RouteTime is (Time -1) * 6.
 
-	% This rule outputs a route specified by the user using the route rule stated above
+	% This rule outputs a route specified by the user using the calcRoute rule stated above
 	%	then calculates the time needed to travel.
 	%	For this example we chose a mean of 6 minutes between 2 stops,
 	%	which makes 6 minutes per stop minus the one you are already at.
